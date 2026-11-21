@@ -1,0 +1,451 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 2,
+    "identityHash": "8f1ae12b347ef30dbf7ad9cd56d1b1a2",
+    "entities": [
+      {
+        "tableName": "pais",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idPais` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombre` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "idPais",
+            "columnName": "idPais",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idPais"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_pais_nombre",
+            "unique": true,
+            "columnNames": [
+              "nombre"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_pais_nombre` ON `${TABLE_NAME}` (`nombre`)"
+          }
+        ]
+      },
+      {
+        "tableName": "ciudad",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCiudad` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombre` TEXT NOT NULL, `idPais` INTEGER, FOREIGN KEY(`idPais`) REFERENCES `pais`(`idPais`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "idCiudad",
+            "columnName": "idCiudad",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idPais",
+            "columnName": "idPais",
+            "affinity": "INTEGER"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idCiudad"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_ciudad_idPais",
+            "unique": false,
+            "columnNames": [
+              "idPais"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_ciudad_idPais` ON `${TABLE_NAME}` (`idPais`)"
+          },
+          {
+            "name": "index_ciudad_nombre_idPais",
+            "unique": true,
+            "columnNames": [
+              "nombre",
+              "idPais"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_ciudad_nombre_idPais` ON `${TABLE_NAME}` (`nombre`, `idPais`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "pais",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idPais"
+            ],
+            "referencedColumns": [
+              "idPais"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "categoria",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCategoria` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombre` TEXT NOT NULL, `edadMin` INTEGER NOT NULL, `edadMax` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "idCategoria",
+            "columnName": "idCategoria",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "edadMin",
+            "columnName": "edadMin",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "edadMax",
+            "columnName": "edadMax",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idCategoria"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_categoria_nombre",
+            "unique": true,
+            "columnNames": [
+              "nombre"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_categoria_nombre` ON `${TABLE_NAME}` (`nombre`)"
+          }
+        ]
+      },
+      {
+        "tableName": "carrera",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCarrera` TEXT NOT NULL, `nombre` TEXT NOT NULL, `fecha` TEXT NOT NULL, `idCiudad` INTEGER, `url` TEXT NOT NULL, `tipoRecorrido` TEXT, `desnivelM` INTEGER, `terreno` TEXT, `temperaturaC` REAL, `humedad` INTEGER, `condiciones` TEXT, PRIMARY KEY(`idCarrera`), FOREIGN KEY(`idCiudad`) REFERENCES `ciudad`(`idCiudad`) ON UPDATE NO ACTION ON DELETE SET NULL )",
+        "fields": [
+          {
+            "fieldPath": "idCarrera",
+            "columnName": "idCarrera",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fecha",
+            "columnName": "fecha",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCiudad",
+            "columnName": "idCiudad",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "url",
+            "columnName": "url",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tipoRecorrido",
+            "columnName": "tipoRecorrido",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "desnivelM",
+            "columnName": "desnivelM",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "terreno",
+            "columnName": "terreno",
+            "affinity": "TEXT"
+          },
+          {
+            "fieldPath": "temperaturaC",
+            "columnName": "temperaturaC",
+            "affinity": "REAL"
+          },
+          {
+            "fieldPath": "humedad",
+            "columnName": "humedad",
+            "affinity": "INTEGER"
+          },
+          {
+            "fieldPath": "condiciones",
+            "columnName": "condiciones",
+            "affinity": "TEXT"
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idCarrera"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_carrera_idCiudad",
+            "unique": false,
+            "columnNames": [
+              "idCiudad"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_carrera_idCiudad` ON `${TABLE_NAME}` (`idCiudad`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "ciudad",
+            "onDelete": "SET NULL",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idCiudad"
+            ],
+            "referencedColumns": [
+              "idCiudad"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "corredor",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCorredor` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `nombre` TEXT NOT NULL, `edad` INTEGER NOT NULL, `idCategoria` INTEGER NOT NULL, FOREIGN KEY(`idCategoria`) REFERENCES `categoria`(`idCategoria`) ON UPDATE NO ACTION ON DELETE RESTRICT )",
+        "fields": [
+          {
+            "fieldPath": "idCorredor",
+            "columnName": "idCorredor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nombre",
+            "columnName": "nombre",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "edad",
+            "columnName": "edad",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCategoria",
+            "columnName": "idCategoria",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": true,
+          "columnNames": [
+            "idCorredor"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_corredor_idCategoria",
+            "unique": false,
+            "columnNames": [
+              "idCategoria"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_corredor_idCategoria` ON `${TABLE_NAME}` (`idCategoria`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "categoria",
+            "onDelete": "RESTRICT",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idCategoria"
+            ],
+            "referencedColumns": [
+              "idCategoria"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "inscripcion",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCorredor` INTEGER NOT NULL, `idCarrera` TEXT NOT NULL, `dorsal` INTEGER NOT NULL, `tiempoObjetivo` TEXT NOT NULL, PRIMARY KEY(`idCorredor`, `idCarrera`), FOREIGN KEY(`idCorredor`) REFERENCES `corredor`(`idCorredor`) ON UPDATE NO ACTION ON DELETE CASCADE , FOREIGN KEY(`idCarrera`) REFERENCES `carrera`(`idCarrera`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idCorredor",
+            "columnName": "idCorredor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCarrera",
+            "columnName": "idCarrera",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dorsal",
+            "columnName": "dorsal",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tiempoObjetivo",
+            "columnName": "tiempoObjetivo",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idCorredor",
+            "idCarrera"
+          ]
+        },
+        "indices": [
+          {
+            "name": "index_inscripcion_idCarrera",
+            "unique": false,
+            "columnNames": [
+              "idCarrera"
+            ],
+            "orders": [],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_inscripcion_idCarrera` ON `${TABLE_NAME}` (`idCarrera`)"
+          },
+          {
+            "name": "index_inscripcion_idCarrera_dorsal",
+            "unique": true,
+            "columnNames": [
+              "idCarrera",
+              "dorsal"
+            ],
+            "orders": [],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_inscripcion_idCarrera_dorsal` ON `${TABLE_NAME}` (`idCarrera`, `dorsal`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "corredor",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idCorredor"
+            ],
+            "referencedColumns": [
+              "idCorredor"
+            ]
+          },
+          {
+            "table": "carrera",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idCarrera"
+            ],
+            "referencedColumns": [
+              "idCarrera"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "resultado",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`idCorredor` INTEGER NOT NULL, `idCarrera` TEXT NOT NULL, `tiempoReal` TEXT NOT NULL, PRIMARY KEY(`idCorredor`, `idCarrera`), FOREIGN KEY(`idCorredor`, `idCarrera`) REFERENCES `inscripcion`(`idCorredor`, `idCarrera`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "idCorredor",
+            "columnName": "idCorredor",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "idCarrera",
+            "columnName": "idCarrera",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "tiempoReal",
+            "columnName": "tiempoReal",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "autoGenerate": false,
+          "columnNames": [
+            "idCorredor",
+            "idCarrera"
+          ]
+        },
+        "foreignKeys": [
+          {
+            "table": "inscripcion",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "idCorredor",
+              "idCarrera"
+            ],
+            "referencedColumns": [
+              "idCorredor",
+              "idCarrera"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [
+      {
+        "viewName": "carrera_vista",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT c.idCarrera AS idCarrera, c.nombre AS nombre, c.fecha AS fecha, COALESCE(ci.nombre, '') AS ciudad, COALESCE(p.nombre, '') AS pais, c.url AS url, c.tipoRecorrido AS tipoRecorrido, c.desnivelM AS desnivelM, c.terreno AS terreno, c.temperaturaC AS temperaturaC, c.humedad AS humedad, c.condiciones AS condiciones FROM carrera c LEFT JOIN ciudad ci ON ci.idCiudad = c.idCiudad LEFT JOIN pais p ON p.idPais = ci.idPais"
+      },
+      {
+        "viewName": "corredor_vista",
+        "createSql": "CREATE VIEW `${VIEW_NAME}` AS SELECT co.idCorredor AS idCorredor, co.nombre AS nombre, co.edad AS edad, ca.nombre AS categoria, co.idCategoria AS idCategoria FROM corredor co INNER JOIN categoria ca ON ca.idCategoria = co.idCategoria"
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '8f1ae12b347ef30dbf7ad9cd56d1b1a2')"
+    ]
+  }
+}
