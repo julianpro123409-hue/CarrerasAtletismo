@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Carreras Atletismo</string>
+    <string name="titulo">Carreras de Atletismo</string>
+    <string name="logo_desc">Logo de Carreras de Atletismo</string>
+    <string name="subtitulo">Maratones del mundo e inscripción de corredores</string>
+    <string name="ver_carreras">Ver carreras</string>
+    <string name="ver_corredores">Corredores</string>
+    <string name="carreras">Próximas carreras</string>
+    <string name="corredores">Corredores</string>
+    <string name="actualizar">Actualizar desde la API</string>
+    <string name="regresar">Regresar</string>
+    <string name="sin_carreras">No hay carreras guardadas. Pulsa el botón de actualizar.</string>
+    <string name="detalle">Detalle de la carrera</string>
+    <string name="clima">Clima promedio</string>
+    <string name="recorrido">Recorrido</string>
+    <string name="inscritos">Corredores inscritos</string>
+    <string name="sin_inscritos">Aún no hay corredores inscritos.</string>
+    <string name="inscribir">Inscribir corredor</string>
+    <string name="nombre">Nombre</string>
+    <string name="edad">Edad</string>
+    <string name="dorsal">Número de dorsal</string>
+    <string name="tiempo_objetivo">Tiempo objetivo (hh:mm:ss)</string>
+    <string name="agregar">Agregar corredor</string>
+    <string name="sin_corredores">No hay corredores. Agrega uno con el formulario.</string>
+    <string name="sin_corredores_inscribir">Primero registra corredores en la pantalla Corredores.</string>
+    <string name="guardar">Guardar</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="mas_info">Ver más información</string>
+    <string name="atribucion">Datos de maratones: RunDida (rundida.com)</string>
+    <string name="msg_carreras_descargadas">Se descargaron %1$d carreras</string>
+    <string name="msg_error_api">No se pudo conectar con la API: %1$s</string>
+    <string name="msg_error_detalle">No se pudo cargar el detalle: %1$s</string>
+    <string name="msg_corredor_agregado">Corredor agregado</string>
+    <string name="msg_corredor_inscrito">Corredor inscrito</string>
+
+    <string name="edad_categoria">%1$d años · %2$s</string>
+    <string name="sin_inscripciones">Sin inscripciones</string>
+    <string name="inscrito_en">Inscrito en: %1$s</string>
+    <string name="borrar_corredor">Borrar corredor</string>
+    <string name="corredor_categoria">%1$s (%2$s)</string>
+
+    <string name="inscritos_conteo">Corredores inscritos (%1$d)</string>
+    <string name="dorsal_formato">#%1$d</string>
+    <string name="categoria_meta">%1$s · Meta: %2$s</string>
+    <string name="quitar_inscripcion">Quitar inscripción</string>
+    <string name="fecha_formato">📅 %1$s</string>
+    <string name="lugar_formato">📍 %1$s</string>
+    <string name="clima_formato">🌡️ %1$s   💧 %2$s</string>
+    <string name="temperatura_valor">%1$.1f °C</string>
+    <string name="humedad_valor">%1$d %%</string>
+    <string name="condiciones_formato">☁️ %1$s</string>
+    <string name="tipo_formato">🏃 Tipo: %1$s</string>
+    <string name="desnivel_formato">⛰️ Desnivel: %1$s</string>
+    <string name="desnivel_valor">%1$d m</string>
+    <string name="terreno_formato">🛣️ Terreno: %1$s</string>
+    <string name="sin_dato">—</string>
+
+    <string name="msg_dorsal_ocupado">El dorsal #%1$d ya lo tiene otro corredor en esta carrera</string>
+    <string name="msg_tiempo_invalido">Tiempo inválido. Usa el formato hh:mm:ss</string>
+    <string name="msg_resultado_guardado">Resultado guardado</string>
+    <string name="registrar_resultado">Registrar resultado</string>
+    <string name="borrar_resultado">Borrar</string>
+    <string name="tiempo_real">Tiempo final (hh:mm:ss)</string>
+    <string name="resultado_formato">🏁 %1$dº lugar · %2$s</string>
+</resources>

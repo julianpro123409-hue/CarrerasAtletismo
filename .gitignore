@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea
+.DS_Store
+/build
+/app/build
+/captures
+.externalNativeBuild
+.cxx
+/.kotlin
+*.log
+hs_err_pid*
+replay_pid*
+/respaldo_v1
